@@ -1,5 +1,6 @@
 package e.onrush.ebank;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +52,10 @@ public class MainActivity extends AppCompatActivity
                     Log.d("BUTTON", "Correct password");
                     Log.d("BUTTON", "username: " + username);
                     Log.d("BUTTON", "password: " + password);
+
+                    Intent launchUserAccount=new Intent(MainActivity.this,UserAccountActivity.class);
+                    startActivity(launchUserAccount);
+
                 } else
                     {
                         Toast logInSuccessToast= Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_LONG);
