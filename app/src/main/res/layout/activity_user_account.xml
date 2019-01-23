@@ -30,14 +30,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="Account Balance"
+        android:textSize="30sp"
+        android:text="Current Balance"
         />
 
     <TextView
+        android:id="@+id/accountBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="100sp"
-        android:text="455"
+        android:text="0"
         />
+
+    <Button
+        android:id="@+id/depositButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deposit €10"
+        />
+
 </LinearLayout>

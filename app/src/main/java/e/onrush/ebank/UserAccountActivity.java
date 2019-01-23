@@ -4,10 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class UserAccountActivity extends AppCompatActivity {
 
     Button logoutButton;
+    Button depositButton;
+    TextView accountBalance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +21,14 @@ public class UserAccountActivity extends AppCompatActivity {
 
         findAllViews();
         setupLogoutButton();
+        setupDepositButtonListener();
     }
 
     private void findAllViews(){
 
         logoutButton=(Button) findViewById(R.id.logoutButton);
+        depositButton=(Button)findViewById(R.id.depositButton);
+        accountBalance=(TextView) findViewById(R.id.accountBalance);
     }
 
     private void setupLogoutButton()
@@ -31,6 +37,30 @@ public class UserAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+    }
+
+    private void setupDepositButtonListener()
+    {
+        depositButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String balance=accountBalance.getText().toString();
+
+                int nullbalance =Integer.valueOf(balance);
+
+                nullbalance+=10;
+
+                final String updatedBalance=String.valueOf(nullbalance);
+
+                accountBalance.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        accountBalance.setText(updatedBalance);
+                    }
+                });
             }
         });
     }
