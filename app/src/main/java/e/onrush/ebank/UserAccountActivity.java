@@ -12,6 +12,7 @@ public class UserAccountActivity extends AppCompatActivity {
     Button depositButton;
     Button withdrawButton;
     TextView accountBalance;
+    TextView welcomeMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class UserAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_account);
 
         findAllViews();
+        unpackIntent();
         setupLogoutButton();
         setupDepositButtonListener();
         setWithdrawButtonListener();
@@ -32,6 +34,12 @@ public class UserAccountActivity extends AppCompatActivity {
         depositButton = (Button) findViewById(R.id.depositButton);
         withdrawButton = (Button) findViewById(R.id.withdrawButton);
         accountBalance = (TextView) findViewById(R.id.accountBalance);
+        welcomeMessage=(TextView) findViewById(R.id.userAccountWelcome);
+    }
+
+    private void unpackIntent()
+    {
+       welcomeMessage.setText("Welcome " + getIntent().getStringExtra("username"));
     }
 
     private void setupLogoutButton() {

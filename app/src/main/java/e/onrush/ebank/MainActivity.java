@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    final String correctUsername="hello";
+    final String correctUsername="onrush";
     final String correctPassword="1234";
     EditText usernameInput;
     EditText passwordInput;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
                     Log.d("BUTTON", "password: " + password);
 
                     Intent launchUserAccount=new Intent(MainActivity.this,UserAccountActivity.class);
+                    launchUserAccount.putExtra("username", correctUsername);
                     startActivity(launchUserAccount);
 
                 } else
