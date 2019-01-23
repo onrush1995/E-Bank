@@ -10,6 +10,7 @@ public class UserAccountActivity extends AppCompatActivity {
 
     Button logoutButton;
     Button depositButton;
+    Button withdrawButton;
     TextView accountBalance;
 
     @Override
@@ -22,17 +23,18 @@ public class UserAccountActivity extends AppCompatActivity {
         findAllViews();
         setupLogoutButton();
         setupDepositButtonListener();
+        setWithdrawButtonListener();
     }
 
-    private void findAllViews(){
+    private void findAllViews() {
 
-        logoutButton=(Button) findViewById(R.id.logoutButton);
-        depositButton=(Button)findViewById(R.id.depositButton);
-        accountBalance=(TextView) findViewById(R.id.accountBalance);
+        logoutButton = (Button) findViewById(R.id.logoutButton);
+        depositButton = (Button) findViewById(R.id.depositButton);
+        withdrawButton = (Button) findViewById(R.id.withdrawButton);
+        accountBalance = (TextView) findViewById(R.id.accountBalance);
     }
 
-    private void setupLogoutButton()
-    {
+    private void setupLogoutButton() {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,18 +44,39 @@ public class UserAccountActivity extends AppCompatActivity {
 
     }
 
-    private void setupDepositButtonListener()
-    {
+    private void setupDepositButtonListener() {
         depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String balance=accountBalance.getText().toString();
+                String balance = accountBalance.getText().toString();
 
-                int nullbalance =Integer.valueOf(balance);
+                int nullbalance = Integer.valueOf(balance);
 
-                nullbalance+=10;
+                nullbalance += 10;
 
-                final String updatedBalance=String.valueOf(nullbalance);
+                final String updatedBalance = String.valueOf(nullbalance);
+
+                accountBalance.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        accountBalance.setText(updatedBalance);
+                    }
+                });
+            }
+        });
+    }
+
+    private void setWithdrawButtonListener() {
+        withdrawButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String balance = accountBalance.getText().toString();
+
+                int nullbalance = Integer.valueOf(balance);
+
+                nullbalance -= 10;
+
+                final String updatedBalance = String.valueOf(nullbalance);
 
                 accountBalance.post(new Runnable() {
                     @Override

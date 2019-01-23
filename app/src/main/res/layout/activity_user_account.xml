@@ -48,5 +48,12 @@
         android:layout_height="wrap_content"
         android:text="Deposit €10"
         />
+    <Button
+        android:id="@+id/withdrawButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="withdraw €10"
+
+        />
 
 </LinearLayout>
